@@ -1,0 +1,12 @@
+{ cell: "a1", value: "eqweqwCountry" },
+{ cell: "b1", value: "Product" },
+{ cell: "c1", value: "Price" },
+{ cell: "a2", value: "Ecuqweqweador" },
+{ cell: "b2", value: "Banana" },
+{ cell: "c2", value: 6.68},
+{ cell: "a3", value: "Belarus" },
+{ cell: "b3", value: "Apple" },
+{ cell: "c3", value: 3.75},
+{ cell: "a4", value: "DASDqweFASDFK" },
+{ cell: "b4", value: "John Grisham" },
+{ cell: "c4", value: 100}
