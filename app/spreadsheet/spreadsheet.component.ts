@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Spreadsheet } from 'dhx-spreadsheet';
  
 @Component({
@@ -17,7 +17,10 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
   @ViewChild('widget', {static: true}) container: ElementRef;
   spreadsheet: Spreadsheet;
   data:any;
-
+  event: string;
+ 
+  constructor(private cd: ChangeDetectorRef) {
+  }
   @Input() toolbar: string[];
   @Input() menu: boolean;
   @Input() editLine: boolean;
@@ -42,166 +45,47 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
     });
 
    
-    // var rangeValues = Spreadsheet.getValue("A1:A3");
-    // console.log(rangeValues);
+    this.spreadsheet.events.on("afterValueChange", (cell: any,value: any)=>{
+      // console.log("A afterSelectionSet in ", "C2" );
+      // console.log(this.event = `Value in cell ${C2}`);
+      this.cd.detectChanges();
+      var rowvalue = cell.match(/(\d)/);          
+      if (rowvalue) { 
+          console.log( "row number is ",rowvalue[0])
+      }
+      // this.spreadsheet.spreadsheet.setValue("A1", "SSM");
+      // this.spreadsheet.setValue("A7", "SSM");                 
+      // console.log(this.rows);
 
-    // this.spreadsheet.events.on("StyleChange", function(cells: any){
-    //   console.log("The style of cell "+Spreadsheet.selection.get()+" is changed");
-    // });
-    
-    this.spreadsheet.events.on("AfterColumnAdd", function(cells: any){
-      // console.log("A new column is added");
-    }); 
-  
-    this.spreadsheet.events.on("AfterrowAdd", function(cells: any){
-    // console.log("A new row is added",cells);
-    });
+     
 
+ var alphabet = ["b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-    this.spreadsheet.events.fire("beforeValueChnage", function(cells: any){
-      // console.log("BEFORE VALUE CHANGE");
-    //   cells.forEach(function getValue(){
-    //     console.log(this.value);
-    // });
-    // this.spreadsheet.getValue("A2");
-    
-    })
-  
-    // afterValueChange
-    this.spreadsheet.events.on("afterValueChange", function(cells: string){
-    
-    console.log("1... *****");
-    console.log("arguments:-",arguments);
-    console.log("Value of cell "+ this.spreadsheet.getValue() +" has changed");
-    console.log(arguments[0]);
-    console.log(arguments[1]);
-    // cells.valueOf()
-
-    // cells.
-    // console.log("A afterValueChange in ", cells );
-    var row = cells.match(/(\d)/);          
-    if (row) { 
-        // console.log("2... *****")
-        // console.log( "row number is ",row[0])
-    }
-    var col = cells.match(/(\w)/);          
-    if (col) { 
-        // console.log("3... *****")
-        // console.log( "col number is ",col[0])
-    }
-    var celldata = "";
-    for (var i = 0; i < arguments.length; i++) {
-      celldata = JSON.stringify(arguments[i]) ;
-      
-    }
-    // console.log("4... *****");
-    // console.log("arguments:-",arguments);
-    // console.log(celldata);
-    // // console.log("UPDATE tablename SET ",col[0],"=",celldata ,"WHERE rownoumber =",row[0]);
-    // console.log("5... *****");
-    // console.log("");
-    // console.log("6... *****");
-    // //  ////////     
-    //  var input = []; // initialise an empty array
-    //  var temp = '';   
-    //      temp =celldata ;
-    //      console.log(temp);
-    //      if (temp === "" || temp === null) {
-  
-    //      } else {
-    //          input.push(temp);  // the array will dynamically grow
-    //      }
-    //      console.log(input);
-
-
-    // this.spreadsheet(row[0],col[0]).getValue();
-//  this.spreadsheet.getValue();
  
-    // this.spreadsheet.forEachRow(function(id){
-    //   //your code here 
-    //   //id - row's id
-    //   });
+ for (var i = 0; i < alphabet.length; i++) {
+    
+    var  combined = alphabet[i].concat(rowvalue[0])
+    var cellid = [].concat(combined)
+    console.log(cellid)
+  }
+  console.log("me",cellid)
+      var columns = "a5,b5";
 
-    //creating an array literal with static values
-// var rowdata=[1,2,3,4,5,6,7,8,9,10];
-//iterating array elements with for loop
-// for (var i = 0; i < rowdata.length; i++) {
-//   console.log("Array element of index rowdata["+i+"] is :",rowdata[i]);
-// }
-    });
+      console.log(this.spreadsheet.getValue(columns));
+      console.log("2nd value",value)
+      
+      });   
 
     
 
-     // <--start sql-->
-      // UPDATE Customers
-      // SET ColumName='data', ColumName='data'
-      // WHERE rownoumber;
-      
-      // <--end sql-->
-
-
-    //  all selection
-    this.spreadsheet.events.on("afterSelectionSet", function(cells: string){
-      // console.log("A afterSelectionSet in ", cells );
-      var matches = cells.match(/(\d)/);          
-      if (matches) { 
-          // console.log( "row number is ",matches[0])
-      }
-      var args = "";
-      for (var i = 1; i < arguments.length; i++) {
-        args =  JSON.stringify(arguments[i]) ;
-        // console.log(arguments[i]);
-        // console.log("a cell value is", args)
-      }
-      });
-
-
-
-
-      // <--start sql-->
-      // UPDATE Customers
-      // SET ContactName='Alfred Schmidt', City='Frankfurt'
-      // WHERE CustomerID=1;
-      
-      // <--end sql-->
-
-      // UPDATE `registration` SET `lastname` = 'Masaye', `email` = 'masayevaibhav1@gmail.com', `Contact` = '9172183492' WHERE `registration`.`Id` = 1;
-
-  //     this.spreadsheet.events.fire("afterValueChange", function(cells: string){
-  
-  //   console.log("A afterValueChange in ", cells );
-  //   var matches = cells.match(/(\d+)/);          
-  //   if (matches) { 
-  //       console.log( "row number is ",matches[0])
-  //   } 
-  // });
-  //    this.spreadsheet.events.detach("afterValueChange", function(cells: string){
-  
-  //   console.log("A afterValueChange in ", cells );
-  //   var matches = cells.match(/(\d+)/);          
-  //   if (matches) { 
-  //       console.log( "row number is ",matches[0])
-  //   } 
-  // });
-
-
-
-// contactForm.attachEvent("onButtonClick", function(name){
-//   contactForm.save();     //sends the values of the updated row to the server
-// });
-
-  // var data = this.spreadsheet.load('assets/datatable.json');
-  // console.log("before JSON load")
   this.data = this.spreadsheet.load("assets/datatable.json");
   this.spreadsheet.parse(this.data);
-  // console.log("after parse");
- 
-
-
 }
 
   ngOnDestroy() {
     // console.log("IN DESTRUCTOR");
     this.spreadsheet.destructor();
   }
+
+  
 }
