@@ -1,12 +1,13 @@
 import { Component, ElementRef, Input, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Spreadsheet } from 'dhx-spreadsheet';
- 
+
 @Component({
   selector: 'app-spreadsheet',
   template: `
   <script type="text/javascript" src="./../../../node_modules/dhx-spreadsheet/codebase/spreadsheet.min.js"></script>  
 <link rel="stylesheet" href="./../../../node_modules/dhx-spreadsheet/codebase/spreadsheet.css">
 
+<button (click)="SaveValue()">Save</button>
 
   <div #widget class='widget-box-wide'></div>
   `,
@@ -14,11 +15,11 @@ import { Spreadsheet } from 'dhx-spreadsheet';
 
 
 export class SpreadsheetComponent implements OnInit, OnDestroy {
-  @ViewChild('widget', {static: true}) container: ElementRef;
+  @ViewChild('widget', { static: true }) container: ElementRef;
   spreadsheet: Spreadsheet;
-  data:any;
+  data: any;
   event: string;
- 
+
   constructor(private cd: ChangeDetectorRef) {
   }
   @Input() toolbar: string[];
@@ -29,9 +30,8 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
   @Input() rows: number;
   @Input() columns: number;
 
-
   ngOnInit() {
-    
+    var Sqlcellsvalue = [];
 
     this.spreadsheet = new Spreadsheet(this.container.nativeElement, {
       toolbar: this.toolbar,
@@ -41,51 +41,52 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
       colsCount: this.colsCount,
       rows: this.rows,
       columns: this.columns,
-      
+    });
+    var rowsvalue = "";
+
+    this.spreadsheet.events.on("afterValueChange", (cell: any, value: any) => {
+      this.cd.detectChanges();
+      var rowvalue = cell.match(/(\d+)/);
+      if (rowvalue) {
+        console.log("row number is ", rowvalue[0])
+      }
+      var columnnumber = cell.match(/(\w)/);
+      if (columnnumber) {
+        console.log("columnnumber number is ", columnnumber[0])
+      }
+      // var colvalues = this.spreadsheet.getValue(cell);
+      // console.log(colvalues)
+      var str = columnnumber[0];
+      var n = str.charCodeAt(0) - 65;
+      var columnid = n + 1;
+      console.log(columnid);
+
+      var rowid = rowvalue[0] - 1;
+      rowsvalue = this.spreadsheet._grid.data.getItem(this.spreadsheet._grid.data.getId(rowid))
+      console.log(rowsvalue)
+
+      var arr = new Array(50);
+      arr.splice(columnid, 0, value);
+      console.log(arr.push());
+      arr.slice(1);
+      console.log(arr);
+      var result =[].concat(arr);
+      console.log("me=",result);      
     });
 
-   
-    this.spreadsheet.events.on("afterValueChange", (cell: any,value: any)=>{
-      // console.log("A afterSelectionSet in ", "C2" );
-      // console.log(this.event = `Value in cell ${C2}`);
-      this.cd.detectChanges();
-      var rowvalue = cell.match(/(\d)/);          
-      if (rowvalue) { 
-          console.log( "row number is ",rowvalue[0])
-      }
-      // this.spreadsheet.spreadsheet.setValue("A1", "SSM");
-      // this.spreadsheet.setValue("A7", "SSM");                 
-      // console.log(this.rows);
+    var columnslength=this.spreadsheet._grid.config.columns.length;
+    console.log("columnslength=",columnslength)
 
-     
-
- var alphabet = ["b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
- 
- for (var i = 0; i < alphabet.length; i++) {
-    
-    var  combined = alphabet[i].concat(rowvalue[0])
-    var cellid = [].concat(combined)
-    console.log(cellid)
+    this.data = this.spreadsheet.load("assets/datatable.json");
+    this.spreadsheet.parse(this.data);
   }
-  console.log("me",cellid)
-      var columns = "a5,b5";
+  SaveValue() {
 
-      console.log(this.spreadsheet.getValue(columns));
-      console.log("2nd value",value)
-      
-      });   
-
-    
-
-  this.data = this.spreadsheet.load("assets/datatable.json");
-  this.spreadsheet.parse(this.data);
-}
-
+  }
   ngOnDestroy() {
     // console.log("IN DESTRUCTOR");
     this.spreadsheet.destructor();
   }
 
-  
+
 }
