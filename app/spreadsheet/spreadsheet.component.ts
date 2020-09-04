@@ -82,38 +82,12 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
       }
 
       var arr = new Array(this.columnslength);
-      // arr.splice(0, 0, this.indexvalues);
-      // arr.splice(this.columnid, 0, value);
-      // arr.push();
-      // arr.slice(1);
-
-      // if (arr.find(item => {
-      //   if (city === item) return true;
-      // })) {
-      //   console.log("vaibhav")
-      // } else {
-
-      // }
-
-      if (this.final.find(item => {
-        if (this.indexvalues === item) return true;
-      })) {
-        console.log("vaibhav")
-      } else {
-        arr.splice(0, 0, this.indexvalues);
-        arr.splice(this.columnid, 0, value);
-        arr.push();
-        arr.slice(1);
-        this.final.push(arr);
-        console.log("vaibhav2")
-      }
-
-      // arr.splice(0, 0, this.indexvalues);
-      // arr.splice(this.columnid, 0, value);
-      // arr.push();
-      // arr.slice(1);
-      // this.final.push(arr);
-      // console.log("vaibhav2")
+ 
+      arr.splice(0, 0, this.indexvalues);
+      arr.splice(this.columnid, 0, value);
+      arr.push();
+      arr.slice(1);
+      this.final.push(arr);
 
     });
 
@@ -128,32 +102,58 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
   SaveValue() {
     console.log("in save value")
 
-    console.log(this.final)
-    function removeDuplicate(arrl) {
-      var c;
-      var len = arrl.length;
-      var result = [];
-      var obj = {};
-      for (c = 0; c < len; c++) {
-        obj[arrl[c]] = 0;
-      }
-      for (c in obj) {
-        result.push(c);
-      }
-      return result;
+    // console.log(this.final)
+    function arrayEqual(a, b) {
+        if (a.length !== b.length) { return false; }
+        for (var i = 0; i < a.length; ++i) {
+            if (a[i] !== b[i]) {
+                return false;
+            }
+        }
+        return true;
     }
+    
+    function contains(array, item) {
+        for (var i = 0; i < array.length; ++i) {
+            if (arrayEqual(array[i], item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    function normalize(array) {
+        var result = [];
+        for (var i = 0; i < array.length; ++i) {
+            if (!contains(result, array[i])) {
+                result.push(array[i]);
+            }
+        }
+        return result;
+    }
+    
+    var result = normalize(this.final);
+    console.log(result);
+   var myArray = [
+      ["AA", "Walter", "White", "Albuquerque"],
+      ["RY", "Skyler", "White", "Albuquerque"],
+      ["RY", "Skyler", "White", "Albuquerque"]
+  ];
+  
+  var test = "RY";
+  
+  for (var i = 0; i < myArray.length + 1; i++) {
+      if (myArray[i][0] === test) {
+          var index = i;
+          break;
+      } 
+  }
+    console.log(i);
+  
+    
+  
 
-    this.datasqlvalue = removeDuplicate(this.final);
-    console.log(this.datasqlvalue)
-    // let cities=["A","B","C","D"];
-    // let city ="C";
-    // let chars =7;
-    // let match1 = cities.find(item => {
-    //   if (city === item) return true;
-    // });
-    // console.log("item from cities that macthed was", match1);
-
-
+    
   }
 
   ngOnDestroy() {
