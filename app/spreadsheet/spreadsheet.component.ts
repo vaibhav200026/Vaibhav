@@ -132,26 +132,9 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
         return result;
     }
     
-    var result = normalize(this.final);
-    console.log(result);
-   var myArray = [
-      ["AA", "Walter", "White", "Albuquerque"],
-      ["RY", "Skyler", "White", "Albuquerque"],
-      ["RY", "Skyler", "White", "Albuquerque"]
-  ];
-  
-  var test = "RY";
-  
-  for (var i = 0; i < myArray.length + 1; i++) {
-      if (myArray[i][0] === test) {
-          var index = i;
-          break;
-      } 
-  }
-    console.log(i);
-  
-    
-  
+    this.datasqlvalue = normalize(this.final);
+    console.log(this.datasqlvalue);
+
 
     
   }
