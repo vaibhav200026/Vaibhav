@@ -24,8 +24,12 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
   columnid: any;
   columnslength: any;
   indexvalues: any;
+  afterrowAddvalue = [];
+  beforeRowDeletevalue = [];
+  afterrowAdd = [];
+  beforeRowDelete = [];
   final = [];
-  datasqlvalue = [];
+  editvalue = [];
 
   constructor(private cd: ChangeDetectorRef) {
   }
@@ -49,6 +53,7 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
       columns: this.columns,
     });
 
+    ///////////////////////////////afterValueChange//////////////////////////////////////
 
     this.spreadsheet.events.on("afterValueChange", (cell: any, value: any) => {
       this.cd.detectChanges();
@@ -61,7 +66,6 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
         // console.log("columnnumber number is ", columnnumber[0])
       }
       // var colvalues = this.spreadsheet.getValue(cell);
-      // console.log(colvalues)
       this.cellvalue = value;
       var str = columnnumber[0];
       var n = str.charCodeAt(0) - 65;
@@ -73,16 +77,13 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
       var rowid = rowvalue[0] - 1;
       this.rowsvalue = this.spreadsheet._grid.data.getItem(this.spreadsheet._grid.data.getId(rowid))
 
-      // console.log(this.rowsvalue)
       var alphabet = ["a"];
       var cellid = [];
       for (var i = 0; i < alphabet.length; i++) {
         var combined = alphabet[i].concat(rowvalue[0])
         this.indexvalues = this.spreadsheet.getValue(combined);
       }
-
       var arr = new Array(this.columnslength);
- 
       arr.splice(0, 0, this.indexvalues);
       arr.splice(this.columnid, 0, value);
       arr.push();
@@ -91,6 +92,46 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
 
     });
 
+    /////////////////////afterRowAdd///////////////////////////////////////////
+
+    this.spreadsheet.events.on("afterRowAdd", (cell: any, value: any) => {
+      this.cd.detectChanges();
+      var rowvalue = cell.match(/(\d+)/);
+      if (rowvalue) {
+        // console.log("row number is ", rowvalue[0])
+      }
+
+      var rowid = rowvalue[0] - 1;
+      var rownumber = [];
+      var arr = [];
+      rownumber.push(rowvalue[0]);
+      arr = this.spreadsheet._grid.data.getItem(this.spreadsheet._grid.data.getId(rowid))
+      this.afterrowAdd = rownumber.concat(arr);
+      this.afterrowAddvalue.push(this.afterrowAdd);
+
+    });
+
+    //////////////////////////////beforeRowDelete//////////////////////////////////
+
+    this.spreadsheet.events.on("beforeRowDelete", (cell: any, value: any) => {
+      this.cd.detectChanges();
+      var rowvalue = cell.match(/(\d+)/);
+      if (rowvalue) {
+        // console.log("row number is ", rowvalue[0])
+      }
+
+      var rowid = rowvalue[0] - 1;
+      var rownumber = [];
+      var arr = [];
+      rownumber.push(rowvalue[0]);
+      arr = this.spreadsheet._grid.data.getItem(this.spreadsheet._grid.data.getId(rowid))
+      this.beforeRowDelete = rownumber.concat(arr);
+      this.beforeRowDeletevalue.push(this.beforeRowDelete);
+
+
+    });
+
+    ////////////////////////////////////////////////////////////////
 
     this.columnslength = this.spreadsheet._grid.config.columns.length;
     console.log("columnslength=", this.columnslength)
@@ -104,39 +145,41 @@ export class SpreadsheetComponent implements OnInit, OnDestroy {
 
     // console.log(this.final)
     function arrayEqual(a, b) {
-        if (a.length !== b.length) { return false; }
-        for (var i = 0; i < a.length; ++i) {
-            if (a[i] !== b[i]) {
-                return false;
-            }
+      if (a.length !== b.length) { return false; }
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i] !== b[i]) {
+          return false;
         }
-        return true;
+      }
+      return true;
     }
-    
+
     function contains(array, item) {
-        for (var i = 0; i < array.length; ++i) {
-            if (arrayEqual(array[i], item)) {
-                return true;
-            }
+      for (var i = 0; i < array.length; ++i) {
+        if (arrayEqual(array[i], item)) {
+          return true;
         }
-        return false;
+      }
+      return false;
     }
-    
+
     function normalize(array) {
-        var result = [];
-        for (var i = 0; i < array.length; ++i) {
-            if (!contains(result, array[i])) {
-                result.push(array[i]);
-            }
+      var result = [];
+      for (var i = 0; i < array.length; ++i) {
+        if (!contains(result, array[i])) {
+          result.push(array[i]);
         }
-        return result;
+      }
+      return result;
     }
-    
-    this.datasqlvalue = normalize(this.final);
-    console.log(this.datasqlvalue);
+
+    this.editvalue = normalize(this.final);
 
 
-    
+    console.log(this.editvalue);
+    console.log(this.afterrowAddvalue);
+    console.log(this.beforeRowDeletevalue);
+
   }
 
   ngOnDestroy() {
