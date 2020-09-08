@@ -2,173 +2,444 @@
 	"data": [
 		{
 			"cell": "a1",
-			"value": "Couwerwerntry",
+			"value": "Product",
 			"css": "someclass"
 		},
 		{
 			"cell": "b1",
-			"value": "Product",
-			"css": "someclass"		
+			"value": "January",
+			"css": "someclass"
 		},
 		{
 			"cell": "c1",
-			"value": "Price",
+			"value": "February",
 			"css": "someclass"
 		},
 		{
 			"cell": "d1",
-			"value": "Amount",
+			"value": "March",
 			"css": "someclass"
 		},
 		{
 			"cell": "e1",
-			"value": "Total Price",
+			"value": "April",
+			"css": "someclass"
+		},
+		{
+			"cell": "f1",
+			"value": "May",
+			"css": "someclass"
+		},
+		{
+			"cell": "g1",
+			"value": "June",
+			"css": "someclass"
+		},
+		{
+			"cell": "h1",
+			"value": "July",
+			"css": "someclass"
+		},
+		{
+			"cell": "i1",
+			"value": "August",
+			"css": "someclass"
+		},
+		{
+			"cell": "j1",
+			"value": "September",
+			"css": "someclass"
+		},
+		{
+			"cell": "k1",
+			"value": "October",
+			"css": "someclass"
+		},
+		{
+			"cell": "l1",
+			"value": "November",
+			"css": "someclass"
+		},
+		{
+			"cell": "m1",
+			"value": "December",
 			"css": "someclass"
 		},
 		{
 			"cell": "a2",
-			"value": "Vaibhav"
-		},
-		{
-			"cell": "b2",
 			"value": "Banana"
 		},
 		{
+			"cell": "b2",
+			"value": "$7.51"
+		},
+		{
 			"cell": "c2",
-			"value": 6.68
+			"value": "$4.23"
 		},
 		{
 			"cell": "d2",
-			"value": 430
+			"value": "$9.24"
 		},
 		{
 			"cell": "e2",
-			"value": 2872.4
+			"value": "$9.59"
 		},
+		{
+			"cell": "f2",
+			"value": "$1.85"
+		},
+		{
+			"cell": "g2",
+			"value": "$3.24"
+		},
+		{
+			"cell": "h2",
+			"value": "$5.17"
+		},
+		{
+			"cell": "i2",
+			"value": "$5.74"
+		},
+		{
+			"cell": "j2",
+			"value": "$0.60"
+		},
+		{
+			"cell": "k2",
+			"value": "$9.17"
+		},
+		{
+			"cell": "l2",
+			"value": "$8.00"
+		},
+		{
+			"cell": "m2",
+			"value": "$6.04"
+		},
+		
 		{
 			"cell": "a3",
-			"value": "Belarus"
-		},
-		{
-			"cell": "b3",
 			"value": "Apple"
 		},
 		{
+			"cell": "b3",
+			"value": "$8.01"
+		},
+		{
 			"cell": "c3",
-			"value": 3.75
+			"value": "$1.79"
 		},
 		{
 			"cell": "d3",
-			"value": 600
+			"value": "$0.91"
 		},
 		{
 			"cell": "e3",
-			"value": 2250
+			"value": "$2.23"
 		},
+		{
+			"cell": "f3",
+			"value": "$6.02"
+		},
+		{
+			"cell": "g3",
+			"value": "$6.42"
+		},
+		{
+			"cell": "h3",
+			"value": "$4.65"
+		},
+		{
+			"cell": "i3",
+			"value": "$7.89"
+		},
+		{
+			"cell": "j3",
+			"value": "$0.96"
+		},
+		{
+			"cell": "k3",
+			"value": "$9.34"
+		},
+		{
+			"cell": "l3",
+			"value": "$2.45"
+		},
+		{
+			"cell": "m3",
+			"value": "$5.46"
+		},
+
 		{
 			"cell": "a4",
-			"value": "Peru"
-		},
-		{
-			"cell": "b4",
 			"value": "Grapes"
 		},
 		{
+			"cell": "b4",
+			"value": "$8.28"
+		},
+		{
 			"cell": "c4",
-			"value": 7.69
+			"value": "$9.54"
 		},
 		{
 			"cell": "d4",
-			"value": 740
+			"value": "$6.48"
 		},
 		{
 			"cell": "e4",
-			"value": 5690.6
+			"value": "$2.49"
 		},
+		{
+			"cell": "f4",
+			"value": "$4.53"
+		},
+		{
+			"cell": "g4",
+			"value": "$7.39"
+		},
+		{
+			"cell": "h4",
+			"value": "$1.69"
+		},
+		{
+			"cell": "i4",
+			"value": "$4.47"
+		},
+		{
+			"cell": "j4",
+			"value": "$8.03"
+		},
+		{
+			"cell": "k4",
+			"value": "$3.84"
+		},
+		{
+			"cell": "l4",
+			"value": "$0.06"
+		},
+		{
+			"cell": "m4",
+			"value": "$1.90"
+		},
+
 		{
 			"cell": "a5",
-			"value": "Egypt"
-		},
-		{
-			"cell": "b5",
 			"value": "Orange"
 		},
 		{
+			"cell": "b5",
+			"value": "$9.25"
+		},
+		{
 			"cell": "c5",
-			"value": 5.86
+			"value": "$3.83"
 		},
 		{
 			"cell": "d5",
-			"value": 560
+			"value": "$9.14"
 		},
 		{
 			"cell": "e5",
-			"value": 3281.6
+			"value": "$6.50"
 		},
+		{
+			"cell": "f5",
+			"value": "$8.48"
+		},
+		{
+			"cell": "g5",
+			"value": "$4.90"
+		},
+		{
+			"cell": "h5",
+			"value": "$8.24"
+		},
+		{
+			"cell": "i5",
+			"value": "$1.89"
+		},
+		{
+			"cell": "j5",
+			"value": "$0.38"
+		},
+		{
+			"cell": "k5",
+			"value": "$6.93"
+		},
+		{
+			"cell": "l5",
+			"value": "$2.93"
+		},
+		{
+			"cell": "m5",
+			"value": "$8.49"
+		},
+
 		{
 			"cell": "a6",
-			"value": "South Africa"
-		},
-		{
-			"cell": "b6",
 			"value": "Grapefruit"
 		},
 		{
+			"cell": "b6",
+			"value": "$9.29"
+		},
+		{
 			"cell": "c6",
-			"value": 8.58
+			"value": "$8.24"
 		},
 		{
 			"cell": "d6",
-			"value": 800
+			"value": "$4.91"
 		},
 		{
 			"cell": "e6",
-			"value": 6864
+			"value": "$5.29"
+		},
+		{
+			"cell": "f6",
+			"value": "$2.28"
+		},
+		{
+			"cell": "g6",
+			"value": "$6.63"
+		},
+		{
+			"cell": "h6",
+			"value": "$9.54"
+		},
+		{
+			"cell": "i6",
+			"value": "$7.60"
+		},
+		{
+			"cell": "j6",
+			"value": "$8.17"
+		},
+		{
+			"cell": "k6",
+			"value": "$8.57"
+		},
+		{
+			"cell": "l6",
+			"value": "$2.75"
+		},
+		{
+			"cell": "m6",
+			"value": "$5.32"
 		},
 		{
 			"cell": "a7",
-			"value": "Spain"
-		},
-		{
-			"cell": "b7",
 			"value": "Lemon"
 		},
 		{
+			"cell": "b7",
+			"value": "$9.02"
+		},
+		{
 			"cell": "c7",
-			"value": 9.12
+			"value": "$1.53"
 		},
 		{
 			"cell": "d7",
-			"value": 650
+			"value": "$7.37"
 		},
 		{
 			"cell": "e7",
-			"value": 5928
+			"value": "$3.31"
+		},
+		{
+			"cell": "f7",
+			"value": "$4.02"
+		},
+		{
+			"cell": "g7",
+			"value": "$4.74"
+		},
+		{
+			"cell": "h7",
+			"value": "$5.97"
+		},
+		{
+			"cell": "i7",
+			"value": "$3.15"
+		},
+		{
+			"cell": "j7",
+			"value": "$8.73"
+		},
+		{
+			"cell": "k7",
+			"value": "$1.66"
+		},
+		{
+			"cell": "l7",
+			"value": "$1.33"
+		},
+		{
+			"cell": "m7",
+			"value": "$1.47"
 		},
 		{
 			"cell": "a8",
-			"value": "Iran"
-		},
-		{
-			"cell": "b8",
 			"value": "Pomegranate"
 		},
 		{
+			"cell": "b8",
+			"value": "$9.66"
+		},
+		{
 			"cell": "c8",
-			"value": 9.67
+			"value": "$1.86"
 		},
 		{
 			"cell": "d8",
-			"value": 300
+			"value": "$0.12"
 		},
 		{
 			"cell": "e8",
-			"value": 2901
+			"value": "$5.13"
+		},
+		{
+			"cell": "f8",
+			"value": "$4.58"
+		},
+		{
+			"cell": "g8",
+			"value": "$7.62"
+		},
+		{
+			"cell": "h8",
+			"value": "$2.07"
+		},
+		{
+			"cell": "i8",
+			"value": "$5.12"
+		},
+		{
+			"cell": "j8",
+			"value": "$8.99"
+		},
+		{
+			"cell": "k8",
+			"value": "$0.74"
+		},
+		{
+			"cell": "l8",
+			"value": "$3.66"
+		},
+		{
+			"cell": "m8",
+			"value": "$1.23"
 		}
+
+		
+		
 	],
 	"styles": {
 		"someclass": {
-			"background": "#000000",
+			"background": "#00b0f0",
 			"color": "#ffffff"
 		}
 	}
