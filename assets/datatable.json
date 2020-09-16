@@ -3,7 +3,7 @@
 		{
 			"cell": "a1",
 			"value": "Product",
-			"css": "someclass"
+			"css": "indexclass"
 		},
 		{
 			"cell": "b1",
@@ -440,6 +440,10 @@
 	"styles": {
 		"someclass": {
 			"background": "#00b0f0",
+			"color": "#ffffff"
+		},
+		"indexclass": {
+			"background": "#000000",
 			"color": "#ffffff"
 		}
 	}
