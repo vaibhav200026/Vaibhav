@@ -3,7 +3,7 @@
 		{
 			"cell": "a1",
 			"value": "Product",
-			"css": "indexclass"
+			"css": "index"
 		},
 		{
 			"cell": "b1",
@@ -67,7 +67,8 @@
 		},
 		{
 			"cell": "a2",
-			"value": "Banana"
+			"value": "Banana",
+			"css": "indexclass"
 		},
 		{
 			"cell": "b2",
@@ -120,7 +121,8 @@
 		
 		{
 			"cell": "a3",
-			"value": "Apple"
+			"value": "Apple",
+			"css": "indexclass"
 		},
 		{
 			"cell": "b3",
@@ -173,7 +175,8 @@
 
 		{
 			"cell": "a4",
-			"value": "Grapes"
+			"value": "Grapes",
+			"css": "indexclass"
 		},
 		{
 			"cell": "b4",
@@ -226,7 +229,8 @@
 
 		{
 			"cell": "a5",
-			"value": "Orange"
+			"value": "Orange",
+			"css": "indexclass"
 		},
 		{
 			"cell": "b5",
@@ -279,7 +283,8 @@
 
 		{
 			"cell": "a6",
-			"value": "Grapefruit"
+			"value": "Grapefruit",
+			"css": "indexclass"
 		},
 		{
 			"cell": "b6",
@@ -331,7 +336,8 @@
 		},
 		{
 			"cell": "a7",
-			"value": "Lemon"
+			"value": "Lemon",
+			"css": "indexclass"
 		},
 		{
 			"cell": "b7",
@@ -383,7 +389,8 @@
 		},
 		{
 			"cell": "a8",
-			"value": "Pomegranate"
+			"value": "Pomegranate",
+			"css": "indexclass"
 		},
 		{
 			"cell": "b8",
@@ -443,8 +450,12 @@
 			"color": "#ffffff"
 		},
 		"indexclass": {
+			"pointer-events": "none"
+		},
+		"index": {
 			"background": "#000000",
-			"color": "#ffffff"
+			"color": "#ffffff",
+			"pointer-events": "none"
 		}
 	}
 }
